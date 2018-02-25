@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Title</title>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script language="JavaScript" th:utext="${'var stripeKey=' +  stripeKey + '; var donation=''' +  donation + ''';'}"></script>
+</head>
+<body>
+
+<h3>Please click here to process your donation!</h3>
+<div id="error_explanation"></div>
+<form action="/donate/charge" method="post" id="payment-form">
+
+    <input type="text" name="amount" id="amount" th:value="${donation}"/><br/>
+
+
+    <div id="payment-request-button">
+        <!-- A Stripe Element will be inserted here. -->
+    </div>
+</form>
+<script src="/stripe2.js"></script>
+
+
+</body>
+</html>

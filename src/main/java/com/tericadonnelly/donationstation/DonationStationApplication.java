@@ -1,5 +1,6 @@
 package com.tericadonnelly.donationstation;
 
+import com.tericadonnelly.donationstation.controllers.DonationController;
 import com.tericadonnelly.donationstation.controllers.SMSController;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
@@ -18,14 +19,16 @@ public class DonationStationApplication {
 
 		SMSController.configProperties();
 
+		DonationController.configProperties();
+
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-		Message message = Message
+		/*Message message = Message
 				.creator(new PhoneNumber("+13146166469"),
 						new PhoneNumber("+13143093599"),
 						"Testing")
 				.create();
-		System.out.println(message.getSid());
+		System.out.println(message.getSid()); */
 	}
 
 }
