@@ -1,4 +1,9 @@
-//Enter Twilio account information below and rename to config.properties
-
+//Enter Twilio and Stripe account information below and rename to config.properties
+//Twilio
 ACCOUNT_SID=
 AUTH_TOKEN=
+
+
+//Stripe
+API_Key=
+Secret_Key=

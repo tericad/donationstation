@@ -26,7 +26,8 @@ var paymentRequest = stripe.paymentRequest({
     label: 'Donation Amount',
     amount: donationAmount,
   },
-
+  requestPayerName: true,
+  requestPayerEmail: true,
   requestShipping: true,
   // `shippingOptions` is optional at this point:
   shippingOptions: [
@@ -66,20 +67,25 @@ paymentRequest.canMakePayment().then(function(result) {
 
 $( "#amount" ).change(function() {
     var amount = $("#amount").val();
-
+    donationAmount = amountCorrection(amount);
     paymentRequest.update({
         total: {
             label: 'Donation Amount',
-            amount: amountCorrection(amount)
+            amount: donationAmount
             }
       })
 });
 
 paymentRequest.on('token', function(ev) {
   // Send the token to your server to charge it!
-  fetch('/charges', {
+  fetch('/donate/charges', {
     method: 'POST',
-    body: JSON.stringify({token: ev.token.id}),
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+    body: JSON.stringify({token: ev.token.id,amount: donationAmount,shippingAddress: ev.shippingAddress,
+        name: ev.payerName, email: ev.payerEmail}),
   })
   .then(function(response) {
     if (response.ok) {

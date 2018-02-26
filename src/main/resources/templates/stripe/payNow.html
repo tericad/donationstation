@@ -11,10 +11,11 @@
     <script language="JavaScript" th:utext="${'var stripeKey=' +  stripeKey + '; var donation=''' +  donation + ''';'}"></script>
 </head>
 <body>
-
-<h3>Please click here to process your donation!</h3>
+<h2>Welcome to the Donation Station</h2>
+<h3>Please click here to process your donation.</h3>
 <div id="error_explanation"></div>
-<form action="/donate/charge" method="post" id="payment-form">
+<div th:text="${errorMessage}"></div>
+<form action="/donate/charges" method="post" id="payment-form">
 
     <input type="text" name="amount" id="amount" th:value="${donation}"/><br/>
 
