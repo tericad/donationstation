@@ -92,6 +92,7 @@ paymentRequest.on('token', function(ev) {
       // Report to the browser that the payment was successful, prompting
       // it to close the browser payment interface.
       ev.complete('success');
+      window.location="https://home.wasteoftime.org/donate/thanks";
     } else {
       // Report to the browser that the payment failed, prompting it to
       // re-show the payment interface, or show an error message and close

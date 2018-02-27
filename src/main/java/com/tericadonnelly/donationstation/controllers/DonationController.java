@@ -1,9 +1,13 @@
 package com.tericadonnelly.donationstation.controllers;
 
 
+import com.tericadonnelly.donationstation.models.Donor;
+import com.tericadonnelly.donationstation.models.Shipping;
+import com.tericadonnelly.donationstation.models.ShippingWrapper;
+import com.tericadonnelly.donationstation.models.data.DonorDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileInputStream;
@@ -17,11 +21,14 @@ import java.util.Properties;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
-import com.stripe.net.RequestOptions;
 
 @Controller
 @RequestMapping ("donate")
 public class DonationController {
+
+    @Autowired
+    private DonorDao donorDao;
+
 
     // Find your Api Key at dashboard.stripe.com
     public static String API_Key = "";
@@ -76,23 +83,21 @@ public class DonationController {
     }
 
     @RequestMapping(value="charges", method = RequestMethod.POST)
-    public String processDonation(@RequestBody Map<String, Object> payload, Model model){
+    @ResponseBody //this is because we're returning nothing. Only status codes.
+    public String processDonation(@RequestBody ShippingWrapper payload, Model model){
 
-        String amount = payload.get("amount").toString();
-        String donorName = payload.get("name").toString();
-        String donorEmail = payload.get("email").toString();
-        Object shipping = payload.get("shippingAddress");
+        String amount = payload.getAmount();
+        String donorName = payload.getDonorName();
+        String donorEmail = payload.getDonorEmail();
+        String stripeToken = payload.getToken();
 
-        System.out.println(donorName + " " + donorEmail);
-        Object token = payload.get("token");
-        String stripeToken = token.toString();
+
         // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
         Stripe.apiKey = Secret_Key;
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
-        //String token = request.getParameter("stripeToken");
 
 // Charge the user's card:
         Map<String, Object> params = new HashMap<String, Object>();
@@ -105,17 +110,23 @@ public class DonationController {
             Charge charge = Charge.create(params);
             System.out.println(charge);
 
+
+
         } catch (StripeException e) {
             e.printStackTrace();
 
         }
 
+        return "";
+
+    }
+
+    @RequestMapping(value="thanks", method = RequestMethod.GET)
+    public String donationThanks(Model model) {
 
         model.addAttribute("title", "Donation Station");
-        model.addAttribute("amount", amount);
 
         return "stripe/thanks";
-
     }
 
 
