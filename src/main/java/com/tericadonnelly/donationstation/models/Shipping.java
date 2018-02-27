@@ -4,9 +4,9 @@ package com.tericadonnelly.donationstation.models;
 public class Shipping {
 
     String city;
-    String[] address;
-    String state;
-    String zipCode;
+    String[] addressLine;
+    String region;
+    String postalCode;
 
     public String getCity() {
         return city;
@@ -16,44 +16,34 @@ public class Shipping {
         this.city = city;
     }
 
-    public String[] getAddress() {
-        return address;
-    }
 
-    /*   public String getAddress() {
-            String commaSepAddress = "";
-            for(String item : address){
-                commaSepAddress = commaSepAddress + ", " + item;
+     public String getAddressLine() {
+         String commaSepAddress = "";
+            for(String item : addressLine){
+                commaSepAddress = commaSepAddress + item + ", ";
             }
             return commaSepAddress;
         }
-    */
-    public void setAddress(String[] address) {
-        this.address = address;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
 
 
-    public static String addressString(String[] address) {
-        String commaSepAddress = "";
-        for (String item : address) {
-            commaSepAddress = commaSepAddress + ", " + item;
-        }
-        return commaSepAddress;
+    public void setAddressLine(String[] addressLine) {
+        this.addressLine = addressLine;
     }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
 }

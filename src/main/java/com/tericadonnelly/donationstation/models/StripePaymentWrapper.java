@@ -1,27 +1,27 @@
 package com.tericadonnelly.donationstation.models;
 
-public class ShippingWrapper {
+public class StripePaymentWrapper {
 
-    String donorName;
-    String donorEmail;
+    String payerName;
+    String payerEmail;
     Shipping shippingAddress;
     String amount;
     String token;
 
-    public String getDonorName() {
-        return donorName;
+    public String getPayerName() {
+        return payerName;
     }
 
-    public void setDonorName(String donorName) {
-        this.donorName = donorName;
+    public void setPayerName(String payerName) {
+        this.payerName = payerName;
     }
 
-    public String getDonorEmail() {
-        return donorEmail;
+    public String getPayerEmail() {
+        return payerEmail;
     }
 
-    public void setDonorEmail(String donorEmail) {
-        this.donorEmail = donorEmail;
+    public void setPayerEmail(String payerEmail) {
+        this.payerEmail = payerEmail;
     }
 
     public Shipping getShippingAddress() {

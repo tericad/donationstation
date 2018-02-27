@@ -2,8 +2,7 @@ package com.tericadonnelly.donationstation.controllers;
 
 
 import com.tericadonnelly.donationstation.models.Donor;
-import com.tericadonnelly.donationstation.models.Shipping;
-import com.tericadonnelly.donationstation.models.ShippingWrapper;
+import com.tericadonnelly.donationstation.models.StripePaymentWrapper;
 import com.tericadonnelly.donationstation.models.data.DonorDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,13 +83,16 @@ public class DonationController {
 
     @RequestMapping(value="charges", method = RequestMethod.POST)
     @ResponseBody //this is because we're returning nothing. Only status codes.
-    public String processDonation(@RequestBody ShippingWrapper payload, Model model){
+    public String processDonation(@RequestBody StripePaymentWrapper payload, Model model){
 
         String amount = payload.getAmount();
-        String donorName = payload.getDonorName();
-        String donorEmail = payload.getDonorEmail();
+        String donorName = payload.getPayerName();
+        String donorEmail = payload.getPayerEmail();
+        String addressLine = payload.getShippingAddress().getAddressLine();
+        String city = payload.getShippingAddress().getCity();
+        String state = payload.getShippingAddress().getRegion();
+        String zipCode = payload.getShippingAddress().getPostalCode();
         String stripeToken = payload.getToken();
-
 
         // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -116,6 +118,9 @@ public class DonationController {
             e.printStackTrace();
 
         }
+
+        Donor newDonor = new Donor(donorName, donorEmail, amount, addressLine, city, state, zipCode);
+        donorDao.save(newDonor);
 
         return "";
 

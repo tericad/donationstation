@@ -8,7 +8,7 @@ package com.tericadonnelly.donationstation.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.HashMap;
+
 
 @Entity
 public class Donor {
@@ -23,13 +23,23 @@ public class Donor {
 
     private String donationAmount;
 
-    private HashMap<String, String> address;
+    private String addressLine;
 
-    public Donor(String name, String email, String donationAmount, HashMap<String, String> address) {
+    private String city;
+
+    private String state;
+
+    private String zipCode;
+
+    public Donor(String name, String email, String donationAmount, String addressLine, String city,
+                 String state, String zipCode) {
         this.name = name;
         this.email = email;
         this.donationAmount = donationAmount;
-        this.address = address;
+        this.addressLine = addressLine;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
     public int getId() {
@@ -60,11 +70,35 @@ public class Donor {
         this.donationAmount = donationAmount;
     }
 
-    public HashMap<String, String> getAddress() {
-        return address;
+    public String getAddressLine() {
+        return addressLine;
     }
 
-    public void setAddress(HashMap<String, String> address) {
-        this.address = address;
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }
