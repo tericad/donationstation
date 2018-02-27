@@ -1,5 +1,7 @@
 package com.tericadonnelly.donationstation.models;
 
+import static java.lang.Double.parseDouble;
+
 public class StripePaymentWrapper {
 
     String payerName;

@@ -21,6 +21,8 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
+import static java.lang.Double.parseDouble;
+
 @Controller
 @RequestMapping ("donate")
 public class DonationController {
@@ -86,6 +88,7 @@ public class DonationController {
     public String processDonation(@RequestBody StripePaymentWrapper payload, Model model){
 
         String amount = payload.getAmount();
+        Double donationAmount = (parseDouble(amount))/100;
         String donorName = payload.getPayerName();
         String donorEmail = payload.getPayerEmail();
         String addressLine = payload.getShippingAddress().getAddressLine();
@@ -119,7 +122,7 @@ public class DonationController {
 
         }
 
-        Donor newDonor = new Donor(donorName, donorEmail, amount, addressLine, city, state, zipCode);
+        Donor newDonor = new Donor(donorName, donorEmail, donationAmount, addressLine, city, state, zipCode);
         donorDao.save(newDonor);
 
         return "";

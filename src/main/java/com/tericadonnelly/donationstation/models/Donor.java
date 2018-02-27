@@ -21,7 +21,7 @@ public class Donor {
 
     private String email;
 
-    private String donationAmount;
+    private Double donationAmount;
 
     private String addressLine;
 
@@ -31,7 +31,7 @@ public class Donor {
 
     private String zipCode;
 
-    public Donor(String name, String email, String donationAmount, String addressLine, String city,
+    public Donor(String name, String email, Double donationAmount, String addressLine, String city,
                  String state, String zipCode) {
         this.name = name;
         this.email = email;
@@ -62,11 +62,11 @@ public class Donor {
         this.email = email;
     }
 
-    public String getDonationAmount() {
+    public Double getDonationAmount() {
         return donationAmount;
     }
 
-    public void setDonationAmount(String donationAmount) {
+    public void setDonationAmount(Double donationAmount) {
         this.donationAmount = donationAmount;
     }
 
