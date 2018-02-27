@@ -115,15 +115,15 @@ public class DonationController {
             Charge charge = Charge.create(params);
             System.out.println(charge);
 
+            Donor newDonor = new Donor(donorName, donorEmail, donationAmount, addressLine, city, state, zipCode);
+            donorDao.save(newDonor);
+
 
 
         } catch (StripeException e) {
             e.printStackTrace();
 
         }
-
-        Donor newDonor = new Donor(donorName, donorEmail, donationAmount, addressLine, city, state, zipCode);
-        donorDao.save(newDonor);
 
         return "";
 
