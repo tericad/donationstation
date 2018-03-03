@@ -21,6 +21,7 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
+import static com.tericadonnelly.donationstation.controllers.EmailController.sendEmails;
 import static java.lang.Double.parseDouble;
 
 @Controller
@@ -117,6 +118,14 @@ public class DonationController {
 
             Donor newDonor = new Donor(donorName, donorEmail, donationAmount, addressLine, city, state, zipCode);
             donorDao.save(newDonor);
+
+            try {
+                sendEmails(donorEmail, donorEmail);
+
+//ToDo:add charity email in place of second donor email.
+            } catch (IOException ex){
+                ex.printStackTrace();
+            }
 
 
 

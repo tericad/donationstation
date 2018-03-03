@@ -28,6 +28,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile group: "com.twilio.sdk", name: "twilio", version: "7.11.+"
 	compile ('com.stripe:stripe-java:5.33.0')
+	compile ('com.sendgrid:sendgrid-java:4.0.1')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
 	runtime('org.springframework.boot:spring-boot-devtools')

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}">Title</title>
-</head>
+
+<head th:replace="fragments :: head"></head>
+
 <body>
-<h2>Donation Station</h2>
+
+<div class="jumbotron text-center">
+   <h1> Donation Station</h1>
 
 <p>Thank you for your donation! An email has been sent to you and the charity.
     Expect your tax letter to be mailed in 4-8 weeks.</p>
+
+</div>
 
 
 </body>

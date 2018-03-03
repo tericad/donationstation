@@ -2,30 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
 <head>
-
     <meta charset="UTF-8"/>
-    <title th:text="${title}">Title</title>
+    <title th:text="${title}">Donation Station</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script language="JavaScript" th:utext="${'var stripeKey=' +  stripeKey + '; var donation=''' +  donation + ''';'}"></script>
 </head>
 <body>
-<h2>Welcome to the Donation Station</h2>
-<h3>Please click here to process your donation.</h3>
+
+<div class="jumbotron text-center">
+    <h2>Welcome to the</h2><h1> Donation Station</h1>
+    <p>Please click below to process your donation.</p>
+</div>
+<div class="container-fluid">
+<div class="text-center">
 <div id="error_explanation"></div>
 <div th:text="${errorMessage}"></div>
-<form action="/donate/charges" method="post" id="payment-form">
-
-    <input type="text" name="amount" id="amount" th:value="${donation}"/><br/>
+<form class="form-inline" action="/donate/charges" method="post" id="payment-form">
+    <div class="input-group">
+    Donation Amount: <input type="text" class="form-control" size="10" name="amount" id="amount" th:value="${donation}"/><br/>
 
 
     <div id="payment-request-button">
         <!-- A Stripe Element will be inserted here. -->
     </div>
+    </div>
 </form>
 <script src="/stripe2.js"></script>
 
-
+</div>
+</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-//Enter Twilio and Stripe account information below and rename to config.properties
+//Enter Twilio, Stripe, and Sendgrid account information below and rename to config.properties
 //Twilio
 ACCOUNT_SID=
 AUTH_TOKEN=
@@ -7,3 +7,7 @@ AUTH_TOKEN=
 //Stripe
 API_Key=
 Secret_Key=
+
+
+//Sendgrid
+SENDGRID_API_KEY=
