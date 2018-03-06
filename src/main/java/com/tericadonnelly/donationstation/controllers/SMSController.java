@@ -30,7 +30,7 @@ public class SMSController {
    public String donationReply(@RequestParam String From, @RequestParam String To, @RequestParam String Body, Model model){
 
        String phoneNumber = From;
-       String charityNumber = To;
+       String charityNumber = To.replace("+","");
        String messageReceived = Body;
 
       // model.addAttribute("phoneNumber", phoneNumber);

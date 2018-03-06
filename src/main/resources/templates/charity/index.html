@@ -6,9 +6,9 @@
 <div class="jumbotron text-center">
     <h2>Welcome to the</h2><h1> Donation Station</h1>
 
-<h2 th:text="${charity.username}">Welcome</h2>
+<h2 th:text="${charityName}">Welcome</h2>
 </div>
-<p>Click <a href="/login">here</a> to logout.</p>
+<p>Click <a href="/user/login">here</a> to logout.</p>
 
     <p th:unless="${donors} and ${donors.size()}">no donations :(</p>
 

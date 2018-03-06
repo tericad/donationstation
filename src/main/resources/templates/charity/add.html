@@ -5,9 +5,11 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <div class="jumbotron text-center">
-    <h2>Welcome to the Donation Station</h2>
-    <p>Create a new account below, or click <a href="/login">here</a> to login to an existing account.</p>
-<form method="post" style="max-width:600px;" th:object="${charity}">
+    <h2>Welcome to the</h2><h1>Donation Station</h1>
+    <p>Create a new account below, or click <a href="/user/login">here</a> to login to an existing account.</p>
+</div>
+<div class="col-xs-3"></div>
+    <form class ="col-xs-6 text-center" method="post" th:object="${charity}">
     <div class="form-group">
         <label th:for="username">Username</label>
         <input class="form-control" th:field="*{username}"  />
@@ -37,6 +39,6 @@
     <input type="submit" value="Add User" />
 
 </form>
-</div>
+<div class="col-xs-3"></div>
 </body>
 </html>

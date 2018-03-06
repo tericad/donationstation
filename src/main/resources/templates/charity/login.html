@@ -6,9 +6,10 @@
 
 <div class="jumbotron text-center">
     <h2>Welcome to the</h2><h1> Donation Station</h1>
-    <p>Login below, or click <a href="/new">here</a> to create a new account.</p>
-
-<form method="post" style="max-width:600px;" th:object="${charity}">
+    <p>Login below, or click <a href="/user/new">here</a> to create a new account.</p>
+</div>
+<div class="col-xs-3"></div>
+<form class="col-xs-6 text-center" method="post" th:object="${charity}">
     <div class="form-group">
         <label th:for="username">Username</label>
         <input class="form-control" th:field="*{username}"  />
@@ -24,10 +25,10 @@
 
     <h3 th:text="${problem}" class="text-danger"></h3>
 
-    <input type="submit" value="Login" />
+    <input type="submit" value="Login"/>
 
 </form>
+<div class="col-xs-3"></div>
 
-</div>
 </body>
 </html>

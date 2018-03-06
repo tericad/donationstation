@@ -105,6 +105,7 @@ public class DonationController {
         String zipCode = payload.getShippingAddress().getPostalCode();
         String stripeToken = payload.getToken();
         String charityNumber = payload.getCharity();
+        System.out.println(charityNumber);
         Long charityPhoneNumber = parseLong(charityNumber);
         List<Charity> charityList = charitydao.findByPhoneNumber(charityPhoneNumber);
         Charity charity = charityList.get(0);

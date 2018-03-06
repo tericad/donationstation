@@ -75,6 +75,7 @@ public class CharityController {
         if(charityUser.get(0).getPassword().equals(charity.getPassword())){
             List<Donor> donors = charityUser.get(0).getDonors();
             new ArrayList<Donor> (donors);
+            model.addAttribute("charityName", charityUser.get(0).getName());
             model.addAttribute("donors", donors);
             return "charity/index";
         }
