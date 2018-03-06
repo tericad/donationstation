@@ -85,7 +85,7 @@ paymentRequest.on('token', function(ev) {
         'Content-Type': 'application/json'
       },
     body: JSON.stringify({token: ev.token.id,amount: donationAmount,shippingAddress: ev.shippingAddress,
-    payerName: ev.payerName, payerEmail: ev.payerEmail}),
+    payerName: ev.payerName, payerEmail: ev.payerEmail, charity: charity})
   })
   .then(function(response) {
     if (response.ok) {

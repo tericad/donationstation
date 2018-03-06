@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<h1 th:text="${title}">Default Title</h1>
+
+<div class="jumbotron text-center">
+    <h2>Welcome to the</h2><h1> Donation Station</h1>
+    <p>Login below, or click <a href="/new">here</a> to create a new account.</p>
+
+<form method="post" style="max-width:600px;" th:object="${charity}">
+    <div class="form-group">
+        <label th:for="username">Username</label>
+        <input class="form-control" th:field="*{username}"  />
+        <span th:errors="*{username}" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="password">Password</label>
+        <input class="form-control" th:field="*{password}"  type="password"/>
+        <span th:errors="*{password}" class="text-danger"></span>
+    </div>
+
+
+    <h3 th:text="${problem}" class="text-danger"></h3>
+
+    <input type="submit" value="Login" />
+
+</form>
+
+</div>
+</body>
+</html>

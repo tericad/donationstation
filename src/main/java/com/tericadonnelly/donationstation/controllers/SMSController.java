@@ -27,16 +27,17 @@ public class SMSController {
 
    @RequestMapping(value="incoming", method = RequestMethod.POST, produces = "application/xml;")
    @ResponseBody
-   public String donationReply(@RequestParam String From, @RequestParam String Body, Model model){
+   public String donationReply(@RequestParam String From, @RequestParam String To, @RequestParam String Body, Model model){
 
        String phoneNumber = From;
+       String charityNumber = To;
        String messageReceived = Body;
 
-       model.addAttribute("phoneNumber", phoneNumber);
-       model.addAttribute("message", messageReceived);
+      // model.addAttribute("phoneNumber", phoneNumber);
+       //model.addAttribute("message", messageReceived);
 
        String url = "Go here to donate: https://home.wasteoftime.org/donate/now/?phone=";
-       Message sms = new Message.Builder().body(new Body(url + phoneNumber + "&message=" + messageReceived)).build();
+       Message sms = new Message.Builder().body(new Body(url + phoneNumber + "&charity=" + charityNumber + "&message=" + messageReceived)).build();
        MessagingResponse twiml = new MessagingResponse.Builder().message(sms).build();
 
        try {

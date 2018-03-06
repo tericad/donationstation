@@ -8,6 +8,8 @@ package com.tericadonnelly.donationstation.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.util.Date;
 
 
 @Entity
@@ -23,6 +25,8 @@ public class Donor {
 
     private Double donationAmount;
 
+    private Date date;
+
     private String addressLine;
 
     private String city;
@@ -31,8 +35,11 @@ public class Donor {
 
     private String zipCode;
 
+    @ManyToOne
+    private Charity charity;
+
     public Donor(String name, String email, Double donationAmount, String addressLine, String city,
-                 String state, String zipCode) {
+                 String state, String zipCode, Date date, Charity charity) {
         this.name = name;
         this.email = email;
         this.donationAmount = donationAmount;
@@ -40,6 +47,11 @@ public class Donor {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.date = date;
+        this.charity = charity;
+    }
+
+    public Donor() {
     }
 
     public int getId() {
@@ -68,6 +80,14 @@ public class Donor {
 
     public void setDonationAmount(Double donationAmount) {
         this.donationAmount = donationAmount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getAddressLine() {
@@ -100,5 +120,13 @@ public class Donor {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Charity getCharity() {
+        return charity;
+    }
+
+    public void setCharity(Charity charity) {
+        this.charity = charity;
     }
 }

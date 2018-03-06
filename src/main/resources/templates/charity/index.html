@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<h1 th:text="${title}">Default Title</h1>
+<div class="jumbotron text-center">
+    <h2>Welcome to the</h2><h1> Donation Station</h1>
+
+<h2 th:text="${charity.username}">Welcome</h2>
+</div>
+<p>Click <a href="/login">here</a> to logout.</p>
+
+    <p th:unless="${donors} and ${donors.size()}">no donations :(</p>
+
+
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Donation</th>
+            <th>Date</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+        </tr>
+
+        <tr th:each="donor : ${donors}">
+            <td th:text="${donor.name}"></td>
+            <td th:text="${donor.email}"></td>
+            <td th:text="${donor.donationAmount}"></td>
+            <td th:text="${donor.Date.toString()}"></td>
+            <td th:text="${donor.addressLine}"></td>
+            <td th:text="${donor.city}"></td>
+            <td th:text="${donor.state}"></td>
+            <td th:text="${donor.zipCode}"></td>
+        </tr>
+
+    </table>
+
+
+
+</body>
+</html>

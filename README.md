@@ -10,5 +10,7 @@ This project uses Java, JavaScript, Bootstrap, HTML, SQLAlchemy, MySQL, REST. It
 
 **Future Features**
 
-* Charity Login
-* Android Pay
+* Charity password hashing
+* Charity sessions
+* Charity search donations by date
+* Bug fixes

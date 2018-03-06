@@ -9,6 +9,7 @@ public class StripePaymentWrapper {
     Shipping shippingAddress;
     String amount;
     String token;
+    String charity;
 
     public String getPayerName() {
         return payerName;
@@ -48,5 +49,13 @@ public class StripePaymentWrapper {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getCharity() {
+        return charity;
+    }
+
+    public void setCharity(String charity) {
+        this.charity = charity;
     }
 }
