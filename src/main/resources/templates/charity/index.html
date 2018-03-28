@@ -30,7 +30,7 @@
         <tr th:each="donor : ${donors}">
             <td th:text="${donor.name}"></td>
             <td th:text="${donor.email}"></td>
-            <td th:text="${donor.donationAmount}"></td>
+            <td th:text="${#numbers.formatDecimal(donor.donationAmount, 0, 'COMMA', 2, 'POINT')}"></td>
             <td th:text="${donor.Date.toString()}"></td>
             <td th:text="${donor.addressLine}"></td>
             <td th:text="${donor.city}"></td>
