@@ -14,3 +14,9 @@ This project uses Java, JavaScript, Bootstrap, HTML, SQLAlchemy, MySQL, REST. It
 * Charity sessions
 * Charity search donations by date
 * Bug fixes
+
+**Additional Project Links**
+
+[A slide presentation with video demo links can be found here](https://github.com/tericad/liftoff-assignments/blob/master/P6-Project_Presentation/DonationStationWithYoutubeLinks.pdf)
+
+[The YouTube video demo playlist is available here](https://www.youtube.com/playlist?list=PLAX1Dfo8edvl2nzNpLpw1-jnPBulVmRVe)
